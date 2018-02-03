@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import PropTypes from 'prop-types';
+import React from "react";
 import Input from "./Input";
 import ButtonLoader from "./ButtonLoader";
 import ActionLock from "material-ui/svg-icons/action/lock";

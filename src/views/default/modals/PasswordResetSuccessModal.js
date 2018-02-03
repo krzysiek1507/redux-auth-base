@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import PropTypes from 'prop-types';
+import React from "react";
 import { Modal, Button, Glyphicon } from "react-bootstrap";
 import ButtonLoader from "../ButtonLoader";
 import Input from "../Input";
