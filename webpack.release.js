@@ -13,7 +13,7 @@ module.exports = {
     "material-ui-theme": "./src/views/material-ui/index"
   },
   output:  {
-    path:          path.join(__dirname),
+    path:          path.join(__dirname, 'dist'),
     filename:      "[name].js",
     libraryTarget: "commonjs"
   },
