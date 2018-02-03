@@ -4,7 +4,6 @@ var config = require("./webpack.client.js");
 var hostname = process.env.HOSTNAME || "localhost";
 
 config.cache = true;
-config.debug = true;
 config.devtool = "eval-sourcemap";
 
 config.entry.unshift(
@@ -21,10 +20,6 @@ config.plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin()
 ];
-
-config.module.postLoaders = [
-  {test: /\.js$/, loaders: ["react-hot"], exclude: /node_modules/}
-]
 
 config.devServer = {
   publicPath:  "http://" + hostname + ":8080/dist/",
