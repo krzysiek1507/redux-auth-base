@@ -28,15 +28,5 @@ beforeEach(() => {
 // uses the global jsdom defined in this file
 [
   "./actions/client-config-test",
-  "./actions/server-config-test",
-  "./views/button-loader-test",
-  "./views/email-sign-up-test",
-  "./views/destroy-account-button-test",
-  "./views/email-sign-in-test",
-  "./views/modals-test",
-  "./views/oauth-sign-in-test",
-  "./views/password-reset-test",
-  "./views/password-update-modal-test",
-  "./views/password-update-test",
-  "./views/sign-out-test"
+  "./actions/server-config-test"
 ].forEach(suite => require(suite).default());

@@ -26,10 +26,6 @@ Click this button to deploy the demo app to your own server:
   * [Password resets](#requestpasswordresetform)
   * [Email sign in](#emailsigninform)
 * Seamless integration with the [devise token auth][dta] Rails gem.
-* Includes the following themes:
-  * [Material UI][material-ui]
-  * [React Bootstrap][react-bootstrap]
-  * A plain theme that you can style from scratch
 * Support for [multiple user types](#multiple-user-types)
 * **coming soon** React Native support
 * **coming soon** I18n support
@@ -45,15 +41,6 @@ The demo uses [React][react], and the source can be found [here](https://github.
 
 * [About this plugin](#about-this-plugin)
 * [Installation](#installation)
-* [Components](#components)
-  * [EmailSignUpForm](#emailsignupform)
-  * [EmailSignInForm](#emailsigninform)
-  * [OAuthSignInButton](#oauthsigninbutton)
-  * [SignOutButton](#signoutbutton)
-  * [DestroyAccountButton](#destroyaccountbutton)
-  * [RequestPasswordResetForm](#requestpasswordresetform)
-  * [UpdatePasswordForm](#updatepasswordform)
-  * [AuthGlobals](#authglobals)
 * [Methods](#methods)
   * [configure](#configure)
   * [fetch](#fetch)
@@ -82,334 +69,7 @@ Only npm is currently supported.
 npm install redux-auth --save
 ~~~
 
-If you want to use the [Material UI][material-ui] or [Bootstrap][react-bootstrap] themes, you will need to install those libraries as well.
-
-~~~sh
-# install material ui
-npm install material-ui --save
-
-# or bootstrap
-npm install react-bootstrap --save
-~~~
-
-Material UI uses inline styles so no further configuration is needed. But with the bootstrap theme, the CSS will also need to be included. Read more at the [React Bootstrap][react-bootstrap] project page.
-
 You must also install and use a json loader
-
---
-
-# Usage
-
-## Components
-
-There are 3 Themes included in this module.
-
-1. [Material UI][material-ui]
-2. [Bootstrap][react-bootstrap]
-3. A default theme
-
-The default theme has no styling, and honestly it just looks really bad. But if you hate heavy UI frameworks and you like to style everything yourself, then you will love the default theme.
-
-All components can make their own API requests, display errors, and display success messages out of the box.
-
-The examples shown below use the Material UI theme.
-
---
-
-### EmailSignUpForm
-
-A form used for email based registration.
-
-![Material UI email sign up][mui-email-sign-up]
-
-##### EmailSignUpForm props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block.
-* **`inputProps`**: An object containing the following attributes:
-	* **`email`**: An object that will override the email input component's default props.
-	* **`password`**: An object that will override the password input component's default props.
-	* **`passwordConfirmation`**: An object that will override the password confirmation input component's default props.
-	* **`submit`**: An object that will override the submit button component's default props.
-
-##### EmailSignUpForm usage
-
-~~~js
-// default theme
-import { EmailSignUpForm } from "redux-auth/default-theme";
-
-// material ui theme
-import { EmailSignUpForm } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { EmailSignUpForm } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  return <EmailSignUpForm />;
-}
-~~~
-
-[View EmailSignUpForm API Expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/email-sign-up.md)
-
---
-
-### EmailSignInForm
-
-A form used to sign in using accounts that were registered by email.
-
-![Material UI email sign in][mui-email-sign-in]
-
-##### EmailSignInForm props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block.
-* **`next`**: A method to call on successful sign-in.
-* **`inputProps`**: An object containing the following attributes:
-  * **`email`**: An object that will override the email input component's default props.
-  * **`password`**: An object that will override the password input component's default props.
-  * **`submit`**: An object that will override the submit button component's default props.
-
-~~~js
-// default theme
-import { EmailSignInForm } from "redux-auth/default-theme";
-
-// material ui theme
-import { EmailSignInForm } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { EmailSignInForm } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  return <EmailSignInForm />;
-}
-~~~
-
-[View EmailSignInForm API expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/email-sign-in.md)
-
---
-
-### OAuthSignInButton
-
-A button used to authenticate using an OAuth provider (facebook, github, etc.).
-
-![Material UI OAuth sign in][mui-oauth-sign-in]
-
-##### OAuthSignInButton props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block.
-* **`provider`**: The name of the target provider service as represented in the `authProviderPaths` endpoint configuration.
-* **`next`**: A method to call on successful sign-in.
-
-Any additional properties will be passed on the button component of the given theme.
-
-~~~js
-// default theme
-import { OAuthSignInButton } from "redux-auth/default-theme";
-
-// material ui theme
-import { OAuthSignInButton } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { OAuthSignInButton } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  // using the default label
-  return <OAuthSignInButton />;
-
-  // or using custom label text
-  return <OAuthSignInButton>Custom Label</OAuthSignInButton>;
-}
-~~~
-
-[View OAuthSignInButton API expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/oauth-sign-in.md)
-
---
-
-### SignOutButton
-
-A button used to end the current user's session.
-
-![Material UI sign out][mui-sign-out]
-
-##### SignOutButton props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block. If this property isn't provided, the current signed in user will be signed out regardless of their user type.
-* **`next`**: A method to call upon successful sign-out.
-
-Any additional properties will be passed on the button component of the given theme.
-
-~~~js
-// default theme
-import { SignOutButton } from "redux-auth/default-theme";
-
-// material ui theme
-import { SignOutButton } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { SignOutButton } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  // using the default label
-  return <SignOutButton />;
-
-  // or using custom label text
-  return <SignOutButton>Custom Label</SignOutButton>;
-}
-~~~
-
-[View SignOutButton API expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/sign-out.md)
-
---
-
-### DestroyAccountButton
-
-A button used to destroy the account of the current user. This will also end the destroyed user's session.
-
-![Material UI destroy account][mui-destroy-account]
-
-##### DestroyAccountButton props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block. If this property isn't provided, the current signed in user's account will be destroyed regardless of their user type.
-
-Any additional properties will be passed on the button component of the given theme.
-
-~~~js
-// default theme
-import { DestroyAccountButton } from "redux-auth/default-theme";
-
-// material ui theme
-import { DestroyAccountButton } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { DestroyAccountButton } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  // using the default label
-  return <DestroyAccountButton />;
-
-  // or using custom label text
-  return <DestroyAccountButton>Custom Label</DestroyAccountButton>;
-}
-~~~
-
-[View DestroyAccountButton API Expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/destroy-account.md)
-
---
-
-### RequestPasswordResetForm
-
-A form used to send password reset emails to users that forgot their password. When users click the link included in the email, they will be redirected to the site that the request was made from. A modal will appear that contains a form allowing the user to create a new password.
-
-![Material UI request password reset][mui-password-reset]
-
-##### RequestPasswordResetForm props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block.
-* **`inputProps`**: An object containing the following attributes:
-  * **`email`**: An object that will override the email input component's default props.
-  * **`submit`**: An object that will override the submit button component's default props.
-
-~~~js
-// default theme
-import { RequestPasswordResetForm } from "redux-auth/default-theme";
-
-// material ui theme
-import { RequestPasswordResetForm } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { RequestPasswordResetForm } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  return <RequestPassswordResetForm />;
-}
-~~~
-
-[View RequestPasswordResetForm API Expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/request-password-reset.md)
-
---
-
-### UpdatePasswordForm
-
-A form that can be used to change the current user's password.
-
-![Material UI update password][mui-update-password]
-
-##### UpdatePasswordForm props:
-
-* **`endpoint`**: The key of the target provider service as represented in the endpoint configuration block. If this value is not provided, the current user's password will be updated regardless of their user type.
-* **`inputProps`**: An object containing the following attributes:
-  * **`password`**: An object that will override the password input component's default props.
-  * **`passwordConfirmation`**: An object that will override the password confirmation input component's default props.
-  * **`submit`**: An object that will override the submit button component's default props.
-
-~~~js
-// default theme
-import { UpdatePasswordForm } from "redux-auth/default-theme";
-
-// material ui theme
-import { UpdatePasswordForm } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { UpdatePasswordForm } from "redux-auth/bootstrap-theme";
-
-// render
-render: () {
-  return <UpdatePasswordForm />;
-}
-~~~
-
-[View UpdatePasswordForm API Expectations](https://github.com/lynndylanhurley/redux-auth/blob/master/docs/api-expectations/update-password.md)
-
---
-
-### AuthGlobals
-
-This component contains all of the modals used in authentication, and also the component that is used to pass credentials from the server to the client when using server side rendering.
-
-This component **MUST** live at the top level of your application **outside of your routes**.
-
-##### AuthGlobals example using redux-router
-
-The following example shows the relevant router configuration. Note that this is not a complete example. See the [demo app][redux-auth-demo] for a complete, working setup.
-
-~~~js
-// default theme
-import { AuthGlobals } from "redux-auth/default-theme";
-
-// material ui theme
-import { AuthGlobals } from "redux-auth/material-ui-theme";
-
-// bootstrap theme
-import { AuthGlobals } from "redux-auth/bootstrap-theme";
-
-// your main app component. notice that AuthGlobals lives at the same level
-// as the app's children.
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <AuthGlobals />
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-// example routes. the nested routes here will replace "this.props.children"
-// in the example above
-var routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={Main} />
-    <Route path="alt" component={Alt} />
-    <Route path="login" component={SignIn} />
-    <Route path="account" component={Account} onEnter={requireAuth} />
-  </Route>
-);
-~~~
 
 --
 
@@ -504,13 +164,11 @@ import React from "react";
 import {Provider} from "react-redux";
 import {configure, authStateReducer} from "redux-auth";
 import {createStore, compose, applyMiddleware, combineReducers} from "redux";
-import {AuthGlobals} from "redux-auth/default-theme";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <AuthGlobals />
         {this.props.children}
       </div>
     );
@@ -608,8 +266,6 @@ renderApp().then(appComponent => {
   ReactDOM.render(appComponent, reactRoot);
 });
 ~~~
-
-**Note:** be sure to include the [`AuthGlobals`](#authglobals) component at the top level of your application. This means **outside** of your `Routes` if you're using something like [react-router][react-router].
 
 See below for the complete list of configuration options.
 
@@ -844,8 +500,6 @@ WTFPL © Lynn Dylan Hurley
 [dfd]: https://api.jquery.com/jQuery.Deferred/
 [angular]: https://angularjs.org/
 [react]: http://facebook.github.io/react/
-[react-bootstrap]: https://react-bootstrap.github.io/
-[material-ui]: http://www.material-ui.com
 [redux]: http://rackt.org/redux/index.html
 [redux-create-store]: http://rackt.org/redux/docs/basics/Store.html
 [react-router]: https://github.com/rackt/react-router

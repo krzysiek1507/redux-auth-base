@@ -12,23 +12,6 @@ import Immutable from "immutable";
 /* dummy components */
 import demoButtons from "../dummy/src/reducers/request-test-buttons";
 import demoUi from "../dummy/src/reducers/demo-ui";
-import Container from "../dummy/src/views/partials/Container";
-import Main from "../dummy/src/views/Main";
-import Account from "../dummy/src/views/Account";
-import SignIn from "../dummy/src/views/SignIn";
-import GlobalComponents from "../dummy/src/views/partials/GlobalComponents";
-
-class App extends React.Component {
-  render() {
-    return (
-      <Container>
-        <GlobalComponents />
-        {this.props.children}
-      </Container>
-    );
-  }
-}
-
 
 export function initialize(
   endpoint = {apiUrl: "http://api.site.com"},
@@ -58,11 +41,7 @@ export function initialize(
 
   // define app routes
   var routes = (
-    <Route path="/" component={App}>
-      <IndexRoute component={Main} />
-      <Route path="login" component={SignIn} />
-      <Route path="account" component={Account} onEnter={requireAuth} />
-    </Route>
+    <Route path="/" />
   );
 
   var history = createMemoryHistory('');

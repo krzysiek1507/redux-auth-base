@@ -7,10 +7,7 @@ module.exports = {
   context: __dirname,
   devtool: false,
   entry:   {
-    "index":             "./src/index",
-    "bootstrap-theme":   "./src/views/bootstrap/index",
-    "default-theme":     "./src/views/default/index",
-    "material-ui-theme": "./src/views/material-ui/index"
+    "index": "./src/index"
   },
   output:  {
     path:          path.join(__dirname, 'dist'),
@@ -26,7 +23,6 @@ module.exports = {
       }
     }, {
       "react": "commonjs react",
-      "classnames": "commonjs classnames",
       "browser-cookies": "commonjs browser-cookies",
       "cookie": "commonjs cookie",
       "extend": "commonjs extend",
@@ -44,22 +40,7 @@ module.exports = {
       "react-router-redux": "commonjs react-router-redux",
       "redux-thunk": "commonjs redux-thunk",
       "thunk": "commonjs thunk",
-      "rc-dialog": "commonjs rc-dialog",
-      "react-loader": "commonjs react-loader",
-      "url": "commonjs url",
-      "react-bootstrap": "commonjs react-bootstrap",
-      "material-ui/Dialog": "commonjs material-ui/Dialog",
-      "material-ui/RaisedButton": "commonjs material-ui/RaisedButton",
-      "material-ui/FlatButton": "commonjs material-ui/FlatButton",
-      "material-ui/TextField": "commonjs material-ui/TextField",
-      "material-ui/styles/colors": "commonjs material-ui/styles/colors",
-      "material-ui/styles/MuiThemeProvider": "commonjs material-ui/styles/MuiThemeProvider",
-      "material-ui/svg-icons/action/exit-to-app": "commonjs material-ui/svg-icons/action/exit-to-app",
-      "material-ui/svg-icons/action/favorite": "commonjs material-ui/svg-icons/action/favorite",
-      "material-ui/svg-icons/action/delete": "commonjs material-ui/svg-icons/action/delete",
-      "material-ui/svg-icons/content/send": "commonjs material-ui/svg-icons/content/send",
-      "material-ui/svg-icons/action/lock": "commonjs material-ui/svg-icons/action/lock",
-      "material-ui/svg-icons/alert/error": "commonjs material-ui/svg-icons/alert/error"
+      "url": "commonjs url"
     }
   ],
   plugins: [
