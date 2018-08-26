@@ -1,13 +1,13 @@
 {
-  "name": "@krzysiek1507/redux-auth",
+  "name": "@krzysiek1507/redux-auth-base",
   "description": "Complete token authentication system for react + redux.",
   "version": "0.0.7",
   "license": "WTFPL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/krzysiek1507/redux-auth.git"
+    "url": "https://github.com/krzysiek1507/redux-auth-base.git"
   },
-  "homepage": "https://github.com/krzysiek1507/redux-auth",
+  "homepage": "https://github.com/krzysiek1507/redux-auth-base",
   "keywords": [
     "react",
     "isomorphic",
