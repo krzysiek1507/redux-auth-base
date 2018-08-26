@@ -99,7 +99,7 @@
     "sinon": "1.17.0",
     "thunk": "^0.0.1",
     "warning": "^2.1.0",
-    "webpack": "3.10.0"
+    "webpack": "^4.17.1"
   },
   "peerDependencies": {},
   "engines": {
