@@ -8,6 +8,7 @@ import {
   getCurrentSettings,
   setCurrentSettings,
   getInitialEndpointKey,
+  getTokenFormat,
   setDefaultEndpointKey,
   setCurrentEndpoint,
   setCurrentEndpointKey,
@@ -95,8 +96,23 @@ export function applyConfig({dispatch, endpoint={}, settings={}, reset=false}={}
 
   if (getCurrentSettings().initialCredentials) {
     // skip initial headers check (i.e. check was already done server-side)
-    let {user, headers} = getCurrentSettings().initialCredentials;
+    let { user, headers, reset_password: resetPassword } = getCurrentSettings().initialCredentials;
+
+    // when resetPassword then 'headers' copy values from 'initialCredentials'
+    if (resetPassword) {
+      headers = headers || {};
+
+      const tokenFormat = getTokenFormat();
+
+      for (const key in tokenFormat) {
+        if (tokenFormat.hasOwnProperty(key)) {
+          headers[key] = getCurrentSettings().initialCredentials[key];
+        }
+      }
+    }
+
     persistData(C.SAVED_CREDS_KEY, headers);
+
     return Promise.resolve(user);
   } else if (savedCreds) {
     // verify session credentials with API
