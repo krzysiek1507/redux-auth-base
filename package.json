@@ -1,7 +1,7 @@
 {
   "name": "@krzysiek1507/redux-auth-base",
   "description": "Complete token authentication system for react + redux.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "WTFPL",
   "repository": {
     "type": "git",
@@ -99,7 +99,8 @@
     "sinon": "1.17.0",
     "thunk": "^0.0.1",
     "warning": "^2.1.0",
-    "webpack": "^4.17.1"
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {},
   "engines": {
