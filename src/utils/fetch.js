@@ -32,9 +32,6 @@ function getAuthHeaders(url) {
     var currentHeaders = retrieveData(C.SAVED_CREDS_KEY) || {},
         nextHeaders = {};
 
-    // bust IE cache
-    nextHeaders["If-Modified-Since"] = "Mon, 26 Jul 1997 05:00:00 GMT";
-
     // set header for each key in `tokenFormat` config
     for (var key in getTokenFormat()) {
       nextHeaders[key] = currentHeaders[key];
